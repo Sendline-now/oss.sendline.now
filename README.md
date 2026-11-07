@@ -10,13 +10,13 @@ numbers come from its build.
 
 | Path                        | What it is                                                                                 |
 |-----------------------------|--------------------------------------------------------------------------------------------|
-| `site.config.mjs`           | the libraries, the tag each one is built from, how its docs split into pages, the hub copy |
+| `site.config.mjs`           | the libraries, the ref each one is built from, how its docs split into pages, the hub copy |
 | `tools/build.mjs`           | the build: plan pages, resolve links, render, search index, link check                     |
 | `tools/lib/docs.mjs`        | markdown: GitHub heading ids, sections, Shiki highlighting, mermaid blocks                 |
 | `tools/lib/sources.mjs`     | where the docs are read from, and the facts read from each `build.sbt`                     |
 | `tools/lib/templates.mjs`   | the hub, the library pages and the 404                                                     |
 | `tools/check.mjs`           | every internal link and anchor in `site/` has to resolve                                   |
-| `tools/fetch-sources.mjs`   | shallow clones of each library at its tag, into `sources/`                                 |
+| `tools/fetch-sources.mjs`   | shallow clones of each library at its ref, into `sources/`                                 |
 | `theme/`                    | the stylesheet, the script and the self-hosted fonts                                       |
 | `brand/`, `tools/brand.mjs` | the library marks, generated; `brand/index.html` is the review sheet                       |
 
@@ -24,12 +24,12 @@ numbers come from its build.
 
 ```bash
 npm ci
-npm run fetch      # each library at its tag, into sources/
+npm run fetch      # each library at its ref, into sources/
 npm run build      # site/, with search index and link check
 npm run serve      # http://localhost:4173, served the way Pages serves it
 ```
 
-To preview docs that are not tagged yet, point the build at working copies instead of `sources/`:
+To preview docs that are not pushed yet, point the build at working copies instead of `sources/`:
 
 ```bash
 OSS_SOURCES=/path/to/folder-with-the-three-repos npm run build
@@ -37,7 +37,7 @@ OSS_SOURCES=/path/to/folder-with-the-three-repos npm run build
 
 The build fails on anything that would publish a broken page: a section named in `site.config.mjs` that a README no
 longer has, a link to a heading that does not exist, an image missing from the repository, an old anchor in `legacy`
-that points nowhere, or a tag whose `build.sbt` says a different version.
+that points nowhere, or a release tag whose `build.sbt` says a different version.
 
 ## How a library's docs become pages
 
@@ -46,7 +46,7 @@ that points nowhere, or a tag whose `build.sbt` says a different version.
 - **Anchors.** Heading ids are GitHub's, counted over the whole file, so `README.md#filters` on GitHub and
   `/mongo4s/core-concepts/#filters` here name the same heading. Links between a library's documents, and links to
   the libraries' repositories on GitHub, resolve to the page that has the target; links to anything else in the
-  repository go to GitHub at the tag.
+  repository go to GitHub at the same ref.
 - **Old addresses.** mongo4s.org and logging4s.org redirect to `/mongo4s/` and `/logging4s/`, keeping the
   fragment. The overview page sends an anchor of the old single-page site (`legacy` in the config), or any README
   anchor that now lives on another page, on to where it is.
@@ -57,8 +57,12 @@ that points nowhere, or a tag whose `build.sbt` says a different version.
 
 ## Releasing a library's docs
 
-Tag the library, then bump its `tag` in `site.config.mjs`. The push to `main` rebuilds and deploys the site. A docs fix
-that should go out without a release needs a new tag too: the site only shows what a tag holds.
+Tag the library, then set its `ref` in `site.config.mjs` to that tag. The push to `main` rebuilds and deploys the site.
+A docs fix that should go out without a release needs a new tag too: the site only shows what its ref holds.
+
+Until a library's first release under Sendline-now is tagged, its `ref` is `main`, and every page says so along with
+the commit it was built from. A push to the library's `main` reaches the site on the next run of the Pages workflow
+(Actions → Pages → Run workflow).
 
 ## Deployment
 

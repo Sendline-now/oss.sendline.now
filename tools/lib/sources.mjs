@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
@@ -13,6 +14,13 @@ const read = async (dir, path) => {
   const file = join(dir, path);
   if (!existsSync(file)) throw new Error(`${file} is missing; run npm run fetch, or set OSS_SOURCES`);
   return readFile(file, 'utf8');
+};
+
+// A tag names one commit; a branch moves, so its pages also say which commit they were built from.
+const builtFrom = (lib, dir) => {
+  if (/^v\d/.test(lib.ref)) return lib.ref;
+  const commit = execFileSync('git', ['-C', dir, 'rev-parse', '--short', 'HEAD'], { encoding: 'utf8' }).trim();
+  return `${lib.ref} (${commit})`;
 };
 
 // The facts every page shows come from the build itself: version and organization from build.sbt, and every pinned
@@ -38,8 +46,8 @@ export const readFacts = async (lib) => {
   return {
     version,
     organization,
-    ref: `v${version}`,
-    builtFrom: local ? 'the working tree' : lib.tag,
+    ref: lib.ref,
+    builtFrom: local ? 'the working tree' : builtFrom(lib, dir),
     scala: pick(lib.versions.scala),
     runtimes: Object.fromEntries(['cats', 'zio', 'kyo', 'rapid'].map((id) => [id, pick(lib.versions[id])])),
     all: versions,

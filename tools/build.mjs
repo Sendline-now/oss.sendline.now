@@ -26,7 +26,9 @@ const plans = new Map();
 for (const lib of libraries) {
   const dir = sourceDir(lib);
   const facts = await readFacts(lib);
-  if (!local && facts.ref !== lib.tag) problems.push(`${lib.id}: build.sbt says ${facts.version} at tag ${lib.tag}`);
+  if (!local && /^v\d/.test(lib.ref) && lib.ref !== `v${facts.version}`) {
+    problems.push(`${lib.id}: build.sbt says ${facts.version} at tag ${lib.ref}`);
+  }
 
   const docs = new Map();
   const doc = async (file) => {

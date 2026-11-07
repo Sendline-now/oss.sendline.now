@@ -113,7 +113,7 @@ const footer = (lib, facts) => `
     </div>
     <div class="footer-legal">
       <span>© Sendline · code under Apache 2.0</span>
-      <span class="mono">${facts ? `built from ${esc(lib.repo)} at ${esc(facts.builtFrom)}` : 'built from each library’s docs at its release tag'}</span>
+      <span class="mono">${facts ? `built from ${esc(lib.repo)} at ${esc(facts.builtFrom)}` : 'built from each library’s docs on GitHub'}</span>
     </div>
   </div>
 </footer>`;
@@ -375,7 +375,7 @@ ${all.map(({ lib, facts }) => lane(lib, facts)).join('\n')}
         <span class="eyebrow">Compatibility</span>
         <h2>What they run on</h2>
       </div>
-      <p>Read from each library’s build at its release tag, so this table moves when a release does.</p>
+      <p>Read from each library’s own build, so this table moves when a release does.</p>
     </div>
 ${matrix(all)}
   </section>

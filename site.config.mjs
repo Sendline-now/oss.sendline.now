@@ -1,6 +1,7 @@
-// What oss.sendline.now is built from. Each library's pages come from its repository at `tag`: bump the tag when a
-// library releases and the next deploy rebuilds its pages. Versions, Scala and JDK facts are read from the library's
-// own build at that tag (tools/lib/sources.mjs), so nothing here restates a number the build already knows.
+// What oss.sendline.now is built from. Each library's pages come from its repository at `ref`: the release tag, bumped
+// when the library releases so the next deploy rebuilds its pages. Before a library's first release under Sendline-now
+// is tagged, `ref` can name a branch instead, and every page says which. Versions, Scala and JDK facts are read from
+// the library's own build at that ref (tools/lib/sources.mjs), so nothing here restates a number the build knows.
 
 export const site = {
   url: 'https://oss.sendline.now',
@@ -29,7 +30,7 @@ export const libraries = [
     no: '01',
     what: 'MongoDB for Scala 3',
     repo: 'Sendline-now/mongo4s',
-    tag: 'v6.0.0',
+    ref: 'v6.0.0',
     description: 'Effect-agnostic MongoDB client and repository layer for Scala 3: any runtime, any BSON codec, AST-free by default.',
     versions: { scala: 'scala3', cats: 'catsEffect3', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: (v) => [['driver', v.mongo]],
@@ -119,7 +120,7 @@ export const libraries = [
     no: '02',
     what: 'Logging for Scala 3',
     repo: 'Sendline-now/logging4s',
-    tag: 'v7.0.0',
+    ref: 'v7.0.0',
     description: 'Structured logging for Scala 3: describe how a type renders once with Loggable, and log values directly.',
     versions: { scala: 'scalaLTS', cats: 'catsEffect', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: () => [],
@@ -172,7 +173,7 @@ export const libraries = [
     no: '03',
     what: 'Metrics for Scala 3',
     repo: 'Sendline-now/metrics4s',
-    tag: 'v0.2.0',
+    ref: 'v0.2.0',
     description: 'Typed, effect-agnostic metrics for Scala 3 on the native Prometheus Java client: a badly named metric is a compile error.',
     versions: { scala: 'scala3', cats: 'catsEffect', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: (v) => [['Prometheus client', v.prometheus]],
