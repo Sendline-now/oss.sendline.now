@@ -1,0 +1,5 @@
+# brand/ holds the originals the libraries' repositories copy byte for byte, so a Windows checkout must not turn
+# their line endings into CRLF.
+*.svg text eol=lf
+*.png binary
+*.woff2 binary

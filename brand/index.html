@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Library marks</title>
+  <link rel="icon" href="mongo4s/mongo4s-favicon.svg" type="image/svg+xml"/>
+  <style>
+    @font-face { font-family: 'Roboto Flex'; font-weight: 100 1000; font-stretch: 25% 151%; src: url(../theme/fonts/roboto-flex-latin-standard-normal.woff2) format('woff2-variations'); }
+    @font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url(../theme/fonts/jetbrains-mono-latin-wght-normal.woff2) format('woff2-variations'); }
+    :root { color-scheme: dark; --ground: #0c0d0f; --card: #16181b; --line: #272a2e; --ink: #f1f0ec; --dim: #959aa1; --light: #f7f5f0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ground); color: var(--ink); font: 16px/1.6 'Roboto Flex', system-ui, sans-serif; }
+    main { max-width: 76rem; margin: 0 auto; padding: 3rem 1rem 5rem; }
+    h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; font-stretch: 125%; margin: 0 0 .5rem; letter-spacing: -.02em; }
+    h2 { font-size: 1.5rem; font-weight: 820; font-stretch: 112%; margin: 3.5rem 0 1rem; display: flex; align-items: center; gap: .75rem; }
+    h2 small { font: 500 .75rem 'JetBrains Mono', monospace; color: var(--dim); letter-spacing: .06em; }
+    p.lead { color: var(--dim); max-width: 48rem; margin: 0 0 1rem; }
+    .label { font: 500 .6875rem 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+    .grid { display: grid; gap: 1rem; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .tile { border: 1px solid var(--line); border-radius: .75rem; padding: 1.25rem; display: grid; gap: 1rem; align-content: start; }
+    .tile.dark { background: var(--card); }
+    .tile.light { background: var(--light); color: #16130e; border-color: #e3dfd6; }
+    .tile.light .label { color: #5d6168; }
+    .tile img { display: block; max-width: 100%; height: auto; }
+    .lockup { height: 72px; width: auto !important; max-width: 100%; }
+    .sizes { display: flex; align-items: end; gap: 1.5rem; flex-wrap: wrap; }
+    .sizes figure { margin: 0; display: grid; justify-items: center; gap: .4rem; }
+    .sizes figcaption { font: .6875rem 'JetBrains Mono', monospace; color: var(--dim); }
+    .px16 { width: 16px; height: 16px; image-rendering: auto; }
+    .family { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; padding: 2rem; background: var(--card); border: 1px solid var(--line); border-radius: .75rem; }
+    .family figure { margin: 0; display: grid; justify-items: center; gap: .5rem; }
+    .family img { width: 96px; height: 96px; }
+    .tabbar { display: flex; gap: 0; background: #202124; border-radius: .5rem .5rem 0 0; padding: .4rem .4rem 0; overflow-x: auto; }
+    .tab { display: flex; align-items: center; gap: .5rem; padding: .45rem .9rem; font-size: .8125rem; color: #bdc1c6; white-space: nowrap; border-radius: .5rem .5rem 0 0; }
+    .tab.on { background: #35363a; color: #fff; }
+    .gh { border: 1px solid; border-radius: .5rem; padding: 2rem 1.5rem 1.5rem; text-align: center; font-family: -apple-system, 'Segoe UI', sans-serif; }
+    .gh.light { background: #fff; border-color: #d0d7de; color: #1f2328; }
+    .gh.dark { background: #0d1117; border-color: #30363d; color: #e6edf3; }
+    .gh img { height: 64px; width: auto; margin: 0 auto 1rem; display: block; }
+    .gh h3 { margin: 0; text-align: left; font-size: 1.6rem; border-bottom: 1px solid; border-color: inherit; padding-bottom: .3rem; font-weight: 600; }
+    .one-ink { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .one-ink svg { width: 72px; height: 72px; }
+    .social img { border-radius: .5rem; border: 1px solid var(--line); }
+    code { font: .8125rem 'JetBrains Mono', monospace; background: #1c1f23; border: 1px solid var(--line); border-radius: .3rem; padding: .05em .35em; }
+    ul.files { columns: 2; font: .8125rem/1.9 'JetBrains Mono', monospace; color: var(--dim); padding-left: 1.1rem; }
+    @media (max-width: 760px) { .two { grid-template-columns: 1fr; } ul.files { columns: 1; } .lockup { height: 52px; } }
+  </style>
+</head>
+<body>
+<main>
+  <span class="label">oss.sendline.now · for approval</span>
+  <h1>Library marks</h1>
+  <p class="lead">Each mark is the Sendline patch in the library's colour, with the library's glyph knocked out in a dark ink of
+    the same hue — the colour-and-ink pair sendline.now gives every section. The wordmarks are drawn with the SENDLINE
+    letters' construction: one stroke of 7, square caps, a 42-unit advance, and the two-part rule, broken where the name
+    meets the shared <code>4S</code>. No fonts and no images inside any file.</p>
+
+  <h2>The family</h2>
+  <div class="family">
+    <figure><img src="sendline-mark.svg" alt="Sendline mark"/><span class="label">Sendline</span></figure>
+    <figure><img src="mongo4s/mongo4s-mark.svg" alt="mongo4s mark"/><span class="label">mongo4s</span></figure>
+    <figure><img src="logging4s/logging4s-mark.svg" alt="logging4s mark"/><span class="label">logging4s</span></figure>
+    <figure><img src="metrics4s/metrics4s-mark.svg" alt="metrics4s mark"/><span class="label">metrics4s</span></figure>
+  </div>
+
+  <section id="libs"></section>
+
+  <h2>In one ink <small>a patch is sewn and vinyl is cut</small></h2>
+  <div class="tile dark">
+    <div class="one-ink" id="one-ink"></div>
+  </div>
+
+  <h2>In a README <small>&lt;picture&gt; picks the light or dark file</small></h2>
+  <div class="grid two">
+    <div class="gh light"><img src="mongo4s/mongo4s-light.svg" alt="mongo4s"/><h3>mongo4s</h3></div>
+    <div class="gh dark"><img src="mongo4s/mongo4s-dark.svg" alt="mongo4s"/><h3>mongo4s</h3></div>
+  </div>
+
+  <h2>In browser tabs <small>the 16-pixel retelling</small></h2>
+  <div class="tabbar">
+    <div class="tab"><img class="px16" src="sendline-favicon.svg" alt=""/>Sendline Open Source</div>
+    <div class="tab on"><img class="px16" src="mongo4s/mongo4s-favicon.svg" alt=""/>mongo4s — MongoDB for Scala 3</div>
+    <div class="tab"><img class="px16" src="logging4s/logging4s-favicon.svg" alt=""/>logging4s — Logging for Scala 3</div>
+    <div class="tab"><img class="px16" src="metrics4s/metrics4s-favicon.svg" alt=""/>metrics4s — Metrics for Scala 3</div>
+  </div>
+
+  <h2>Social cards <small>GitHub social preview and og:image, 1280 × 640</small></h2>
+  <div class="grid social">
+    <img src="mongo4s/mongo4s-social.png" alt="mongo4s social card"/>
+    <img src="logging4s/logging4s-social.png" alt="logging4s social card"/>
+    <img src="metrics4s/metrics4s-social.png" alt="metrics4s social card"/>
+  </div>
+
+  <h2>Files per library</h2>
+  <ul class="files">
+    <li>&lt;lib&gt;.svg — lockup, letters in currentColor</li>
+    <li>&lt;lib&gt;-light.svg / -dark.svg — lockup for README</li>
+    <li>&lt;lib&gt;-mark.svg — the mark alone</li>
+    <li>&lt;lib&gt;-wordmark.svg — the wordmark alone</li>
+    <li>&lt;lib&gt;-favicon.svg — sixteen pixels</li>
+    <li>&lt;lib&gt;-mark-512.png — avatars, Scaladex</li>
+    <li>&lt;lib&gt;-light-1200.png / -dark-1200.png</li>
+    <li>&lt;lib&gt;-social.png — 1280 × 640</li>
+  </ul>
+</main>
+
+<template id="lib">
+  <h2 data-name></h2>
+  <div class="grid two">
+    <div class="tile dark"><span class="label">lockup · dark</span><img class="lockup" data-src="-dark.svg" alt=""/></div>
+    <div class="tile light"><span class="label">lockup · light</span><img class="lockup" data-src="-light.svg" alt=""/></div>
+    <div class="tile dark">
+      <span class="label">mark</span>
+      <div class="sizes">
+        <figure><img data-src="-mark.svg" width="120" height="120" alt=""/><figcaption>120</figcaption></figure>
+        <figure><img data-src="-mark.svg" width="48" height="48" alt=""/><figcaption>48</figcaption></figure>
+        <figure><img data-src="-mark.svg" width="24" height="24" alt=""/><figcaption>24</figcaption></figure>
+        <figure><img data-src="-favicon.svg" width="32" height="32" alt=""/><figcaption>favicon 32</figcaption></figure>
+        <figure><img data-src="-favicon.svg" class="px16" alt=""/><figcaption>favicon 16</figcaption></figure>
+      </div>
+    </div>
+    <div class="tile light">
+      <span class="label">mark</span>
+      <div class="sizes">
+        <figure><img data-src="-mark.svg" width="120" height="120" alt=""/><figcaption>120</figcaption></figure>
+        <figure><img data-src="-mark.svg" width="48" height="48" alt=""/><figcaption>48</figcaption></figure>
+        <figure><img data-src="-mark.svg" width="24" height="24" alt=""/><figcaption>24</figcaption></figure>
+        <figure><img data-src="-favicon.svg" width="32" height="32" alt=""/><figcaption>favicon 32</figcaption></figure>
+        <figure><img data-src="-favicon.svg" class="px16" alt=""/><figcaption>favicon 16</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  const libs = ['mongo4s', 'logging4s', 'metrics4s'];
+  const host = document.getElementById('libs');
+  const template = document.getElementById('lib');
+
+  for (const lib of libs) {
+    const node = template.content.cloneNode(true);
+    node.querySelector('[data-name]').textContent = lib;
+    node.querySelectorAll('[data-src]').forEach((img) => {
+      img.src = `${lib}/${lib}${img.dataset.src}`;
+      img.alt = lib;
+    });
+    host.appendChild(node);
+  }
+
+  // One ink: the patch filled, the rim and the glyph cut out of it.
+  const inks = ['#f1f0ec', '#df7859', '#5bbf7a'];
+  const oneInk = document.getElementById('one-ink');
+
+  Promise.all(libs.map((lib) => fetch(`${lib}/${lib}-mark.svg`).then((r) => r.text()))).then((sources) => {
+    sources.forEach((source, i) => {
+      const doc = new DOMParser().parseFromString(source, 'image/svg+xml');
+      const paths = [...doc.querySelectorAll('path')];
+      const patch = paths[0].getAttribute('d');
+      const cut = paths.slice(1).map((p) => {
+        const parent = p.parentElement;
+        const width = p.getAttribute('stroke-width') ?? parent.getAttribute('stroke-width');
+        return `<path d="${p.getAttribute('d')}" fill="none" stroke="#000" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/>`;
+      }).join('');
+
+      inks.forEach((ink, j) => {
+        const id = `cut-${i}-${j}`;
+        oneInk.insertAdjacentHTML('beforeend', `<svg viewBox="0 0 120 120" aria-label="${libs[i]} in one ink">
+          <mask id="${id}"><path d="${patch}" fill="#fff"/>${cut}</mask>
+          <path d="${patch}" fill="${ink}" mask="url(#${id})"/></svg>`);
+      });
+    });
+  });
+</script>
+</body>
+</html>
