@@ -58,11 +58,11 @@ that points nowhere, or a release tag whose `build.sbt` says a different version
 ## Releasing a library's docs
 
 Tag the library, then set its `ref` in `site.config.mjs` to that tag. The push to `main` rebuilds and deploys the site.
-A docs fix that should go out without a release needs a new tag too: the site only shows what its ref holds.
+A docs change that should not wait for the next release can go out from `main`: set the library's `ref` to `main`
+until the next tag.
 
-Until a library's first release under Sendline-now is tagged, its `ref` is `main`, and every page says so along with
-the commit it was built from. A push to the library's `main` reaches the site on the next run of the Pages workflow
-(Actions → Pages → Run workflow).
+While a library builds from `main`, every page says so along with the commit it was built from, and a push to the
+library's `main` reaches the site on the next run of the Pages workflow (Actions → Pages → Run workflow).
 
 ## Deployment
 

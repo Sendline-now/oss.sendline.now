@@ -1,7 +1,7 @@
 // What oss.sendline.now is built from. Each library's pages come from its repository at `ref`: the release tag, bumped
-// when the library releases so the next deploy rebuilds its pages. Before a library's first release under Sendline-now
-// is tagged, `ref` can name a branch instead, and every page says which. Versions, Scala and JDK facts are read from
-// the library's own build at that ref (tools/lib/sources.mjs), so nothing here restates a number the build knows.
+// when the library releases so the next deploy rebuilds its pages. Between releases `ref` can name a branch instead,
+// for docs that should not wait for the next tag, and every page says which. Versions, Scala and JDK facts are read
+// from the library's own build at that ref (tools/lib/sources.mjs), so nothing here restates a number the build knows.
 
 export const site = {
   url: 'https://oss.sendline.now',
@@ -30,7 +30,7 @@ export const libraries = [
     no: '01',
     what: 'MongoDB for Scala 3',
     repo: 'Sendline-now/mongo4s',
-    ref: 'v6.0.0',
+    ref: 'main', // the docs are ahead of v6.0.0; back to a tag at the next release
     description: 'Effect-agnostic MongoDB client and repository layer for Scala 3: any runtime, any BSON codec, AST-free by default.',
     versions: { scala: 'scala3', cats: 'catsEffect3', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: (v) => [['driver', v.mongo]],
@@ -45,7 +45,7 @@ export const libraries = [
     },
     next: ['core-concepts', 'bson-codecs', 'repositories', 'benchmarks'],
     groups: [
-      { title: 'Start', pages: [{ slug: '', title: 'Overview', file: 'README.md', sections: ['', 'Quick start', 'Adopters'] }] },
+      { title: 'Start', pages: [{ slug: '', title: 'Overview', file: 'README.md', sections: ['', 'Quick start'] }] },
       {
         title: 'Guide',
         pages: [
@@ -112,7 +112,6 @@ export const libraries = [
       'design-conditional': 'design/#insert-if-absent-writes-only-on-insert',
       'design-evolution': 'design/#evolving-the-api',
       'design-rejected': 'design/#deliberately-not-done',
-      adopters: '#adopters',
     },
   },
   {
@@ -120,7 +119,7 @@ export const libraries = [
     no: '02',
     what: 'Logging for Scala 3',
     repo: 'Sendline-now/logging4s',
-    ref: 'v7.0.0',
+    ref: 'main', // the docs are ahead of v7.0.0; back to a tag at the next release
     description: 'Structured logging for Scala 3: describe how a type renders once with Loggable, and log values directly.',
     versions: { scala: 'scalaLTS', cats: 'catsEffect', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: () => [],
@@ -135,7 +134,7 @@ export const libraries = [
     },
     next: ['loggable', 'logging', 'backends', 'configuration'],
     groups: [
-      { title: 'Start', pages: [{ slug: '', title: 'Overview', file: 'README.md', sections: ['', 'Quick start', 'Adopters'] }] },
+      { title: 'Start', pages: [{ slug: '', title: 'Overview', file: 'README.md', sections: ['', 'Quick start'] }] },
       {
         title: 'Guide',
         pages: [
