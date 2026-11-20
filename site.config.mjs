@@ -7,7 +7,7 @@ export const site = {
   url: 'https://oss.sendline.now',
   org: 'Sendline-now',
   title: 'Sendline Open Source',
-  description: 'Effect-agnostic Scala 3 libraries from Sendline: mongo4s, logging4s and metrics4s.',
+  description: 'Effect-agnostic Scala 3 libraries from Sendline: mongo4s, logging4s, metrics4s and oauth4s.',
 };
 
 export const runtimes = [
@@ -30,7 +30,7 @@ export const libraries = [
     no: '01',
     what: 'MongoDB for Scala 3',
     repo: 'Sendline-now/mongo4s',
-    ref: 'main', // the docs are ahead of v6.0.0; back to a tag at the next release
+    ref: 'v6.1.0',
     description: 'Effect-agnostic MongoDB client and repository layer for Scala 3: any runtime, any BSON codec, AST-free by default.',
     versions: { scala: 'scala3', cats: 'catsEffect3', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: (v) => [['driver', v.mongo]],
@@ -119,7 +119,7 @@ export const libraries = [
     no: '02',
     what: 'Logging for Scala 3',
     repo: 'Sendline-now/logging4s',
-    ref: 'main', // the docs are ahead of v7.0.0; back to a tag at the next release
+    ref: 'v7.0.1',
     description: 'Structured logging for Scala 3: describe how a type renders once with Loggable, and log values directly.',
     versions: { scala: 'scalaLTS', cats: 'catsEffect', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: () => [],
@@ -172,7 +172,7 @@ export const libraries = [
     no: '03',
     what: 'Metrics for Scala 3',
     repo: 'Sendline-now/metrics4s',
-    ref: 'v0.2.0',
+    ref: 'v1.0.0',
     description: 'Typed, effect-agnostic metrics for Scala 3 on the native Prometheus Java client: a badly named metric is a compile error.',
     versions: { scala: 'scala3', cats: 'catsEffect', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: (v) => [['Prometheus client', v.prometheus]],
@@ -219,18 +219,74 @@ export const libraries = [
     aliases: { contributing: 'CONTRIBUTING.md', license: 'LICENSE' },
     legacy: {},
   },
+  {
+    id: 'oauth4s',
+    no: '04',
+    what: 'OAuth for Scala 3',
+    repo: 'Sendline-now/oauth4s',
+    ref: 'v0.1.0',
+    description: 'OAuth 2.0 / 2.1 and OpenID Connect client for Scala 3, with Google, Microsoft, Apple and five more providers ready to use.',
+    versions: { scala: 'scala3', cats: 'catsEffect', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
+    chips: () => [],
+    jdk: { base: '17', notes: [['rapid', '21'], ['kyo', '25']] },
+    install: { runtime: 'oauth4s-{rt}', modules: ['oauth4s-http-jdk', 'oauth4s-providers'], import: 'oauth4s.runtime.{rt}' },
+    installNote: 'An HTTP client goes next to the runtime: <code>java.net.http</code> here, or http4s or sttp. <code>oauth4s-rapid</code> needs JDK 21 and <code>oauth4s-kyo</code> JDK 25; every other module runs on JDK 17.',
+    javadoc: 'oauth4s-core_3',
+    lane: {
+      text: 'OAuth 2.0 / 2.1 and OpenID Connect client. <strong>PKCE is on unless you turn it off</strong>, the state is checked where the callback arrives, and an ID token is verified before it is read.',
+      chips: () => ['OAuth 2.1 · OpenID Connect', '8 providers'],
+      third: { title: 'Providers', slug: 'providers' },
+    },
+    next: ['authorization-code', 'openid-connect', 'providers', 'recipes'],
+    groups: [
+      { title: 'Start', pages: [{ slug: '', title: 'Overview', file: 'README.md', sections: ['', 'Quick start'] }] },
+      {
+        title: 'Guide',
+        pages: [
+          { slug: 'authorization-code', file: 'README.md', section: 'The authorization code flow', blurb: 'authorize, complete, and the flow kept between them' },
+          { slug: 'other-grants', file: 'README.md', section: 'Other grants' },
+          { slug: 'openid-connect', file: 'README.md', section: 'OpenID Connect', blurb: 'Discovery, ID token validation, UserInfo and logout' },
+          { slug: 'providers', file: 'README.md', section: 'Providers', blurb: 'Google, Microsoft, Apple, Facebook, Instagram, Strava, VK ID and X' },
+          { slug: 'jwt', file: 'README.md', section: 'JWT, JWK and JWKS' },
+          { slug: 'errors', file: 'README.md', section: 'Errors' },
+          { slug: 'runtimes', file: 'README.md', section: 'Runtimes' },
+          { slug: 'http-clients', file: 'README.md', section: 'HTTP clients' },
+          { slug: 'json-codecs', file: 'README.md', section: 'JSON codecs' },
+          { slug: 'testing', file: 'README.md', section: 'Testing' },
+          { slug: 'modules', file: 'README.md', section: 'Modules' },
+          { slug: 'known-gaps', file: 'README.md', section: 'Known gaps' },
+        ],
+      },
+      {
+        title: 'Reference',
+        pages: [
+          { slug: 'recipes', file: 'RECIPES.md' },
+          { slug: 'benchmarks', file: 'BENCHMARKS.md' },
+          { slug: 'design', file: 'DESIGN.md' },
+          { slug: 'compatibility', file: 'COMPATIBILITY.md' },
+          { slug: 'changelog', file: 'CHANGELOG.md' },
+          { slug: 'roadmap', file: 'ROADMAP.md' },
+        ],
+      },
+      { title: 'Project', pages: [{ slug: 'contributing', file: 'CONTRIBUTING.md', title: 'Contributing' }] },
+    ],
+    aliases: { contributing: 'CONTRIBUTING.md', license: 'LICENSE' },
+    legacy: {},
+  },
 ];
 
 // The hub's own copy. Every claim here has its source beside it.
 export const hub = {
-  lead: 'Three Scala 3 libraries — a MongoDB client, structured logging and typed metrics — built the same way: <strong>no core module depends on an effect system</strong>, and cats-effect, ZIO, Kyo or rapid plug in through a <code>given</code> import. Apache 2.0, on Maven Central.',
+  lead: 'Four Scala 3 libraries — a MongoDB client, structured logging, typed metrics and an OAuth 2.0 / OpenID Connect client — built the same way: <strong>no core module depends on an effect system</strong>, and cats-effect, ZIO, Kyo or rapid plug in through a <code>given</code> import. Apache 2.0, on Maven Central.',
   principles: [
     // each library's README, first paragraph: "core depends on neither" / "no dependency on any of them" / "depends on nothing"
+    // / oauth4s "`core` depends on nothing"
     ['Cores depend on nothing', 'No cats-effect, ZIO or Kyo in any <code>core</code> module. Runtimes, backends and codecs are separate modules you add.'],
     ['Swap a module, keep the code', 'Changing runtime means one dependency and one <code>given</code> import. The code between them stays the same.'],
-    // .github/workflows/ci.yml in all three runs mimaReportBinaryIssues; mongo4s CONTRIBUTING.md "README.md is checked
-    // two ways", metrics4s build.sbt compiles it/docs
-    ['Compatibility is checked, not promised', 'All three run MiMa against their previous releases in CI. mongo4s and metrics4s also check the code in their docs against the code itself.'],
+    // .github/workflows/ci.yml in all four runs mimaReportBinaryIssues, and oauth4s build.sbt has binaryCompatibleWith =
+    // Set.empty at 0.1.0; mongo4s CONTRIBUTING.md "README.md is checked two ways", metrics4s build.sbt compiles it/docs,
+    // oauth4s CONTRIBUTING.md "DocsItSpec fails on a block that matches no example"
+    ['Compatibility is checked, not promised', 'Every library runs MiMa against its previous releases in CI, oauth4s from its second release on. mongo4s, metrics4s and oauth4s also check the code in their docs against the code itself.'],
   ],
   together: {
     // metrics4s README, Integrations: MongoMetrics(...).register[IO], listeners.applyTo(MongoClientSettings.builder()),
