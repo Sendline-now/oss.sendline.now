@@ -1,8 +1,9 @@
 # oss.sendline.now
 
 The site for Sendline's open-source Scala 3 libraries: [mongo4s](https://github.com/Sendline-now/mongo4s),
-[logging4s](https://github.com/Sendline-now/logging4s) and [metrics4s](https://github.com/Sendline-now/metrics4s). It is a
-static site on GitHub Pages, built by a small Node generator from each library's own markdown at its release tag.
+[logging4s](https://github.com/Sendline-now/logging4s), [metrics4s](https://github.com/Sendline-now/metrics4s) and
+[oauth4s](https://github.com/Sendline-now/oauth4s). It is a static site on GitHub Pages, built by a small Node generator
+from each library's own markdown at its release tag.
 Nothing about a library is written here twice: its pages are its README and docs, and the versions, Scala and runtime
 numbers come from its build.
 
@@ -32,7 +33,7 @@ npm run serve      # http://localhost:4173, served the way Pages serves it
 To preview docs that are not pushed yet, point the build at working copies instead of `sources/`:
 
 ```bash
-OSS_SOURCES=/path/to/folder-with-the-three-repos npm run build
+OSS_SOURCES=/path/to/folder-with-the-library-repos npm run build
 ```
 
 The build fails on anything that would publish a broken page: a section named in `site.config.mjs` that a README no

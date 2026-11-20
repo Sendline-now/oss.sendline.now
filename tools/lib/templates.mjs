@@ -354,11 +354,11 @@ ${all.map(({ lib, facts }) => lane(lib, facts)).join('\n')}
   <section class="band" id="shape">
     <div class="band-head">
       <div>
-        <span class="eyebrow">One shape, three libraries</span>
+        <span class="eyebrow">One shape, four libraries</span>
         <h2>Pick a runtime once</h2>
       </div>
       <p>Each library is a core plus thin modules around it. The runtime is one of those modules and one import, and it
-        is the same four runtimes, wired the same way, in all three.</p>
+        is the same four runtimes, wired the same way, in every library.</p>
     </div>
 
     <div class="principles">

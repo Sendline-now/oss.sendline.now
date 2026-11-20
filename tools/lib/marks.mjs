@@ -16,10 +16,12 @@ export const sendline = {
 };
 
 export const letters = {
+  A: 'M4 48 L17 6 L30 48 M8.5 34 H25.5',
   C: 'M30 6 H12 C4 6 2 14 2 27 C2 40 4 48 12 48 H30',
   D: 'M4 6 V48 H16 C28 48 32 40 32 27 C32 14 28 6 16 6 Z',
   E: 'M30 6 H4 V48 H30 M4 27 H25',
   G: 'M30 6 H12 C4 6 2 14 2 27 C2 40 4 48 12 48 H30 V28 H18',
+  H: 'M4 6 V48 M30 6 V48 M4 27 H30',
   I: 'M4 6 H30 M17 6 V48 M4 48 H30',
   L: 'M4 6 V48 H30',
   M: 'M4 48 V6 L17 30 L30 6 V48',
@@ -28,6 +30,7 @@ export const letters = {
   R: 'M4 48 V6 H18 C27 6 30 11 30 17 C30 23 27 28 18 28 H4 M18 28 L30 48',
   S: 'M30 6 H10 C3 6 3 26 10 26 H24 C31 26 31 48 24 48 H4',
   T: 'M4 6 H30 M17 6 V48',
+  U: 'M4 6 V34 C4 44 8 48 14 48 H20 C26 48 30 44 30 34 V6',
   4: 'M23 48 V6 L4 34 H31',
 };
 
@@ -59,6 +62,14 @@ export const marks = {
     glyph: ['M43 82 V66', 'M60 82 V50', 'M77 82 V34'],
     small: ['M38 86 V66', 'M60 86 V48', 'M82 86 V30'],
     smallStroke: 15,
+  },
+  oauth4s: {
+    word: 'OAUTH4S',
+    colour: '#a892f0',
+    ink: '#110a2e',
+    glyph: ['M32 58 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0', 'M56 58 H88', 'M72 58 V74', 'M88 58 V68'],
+    small: ['M26 58 a15 15 0 1 0 30 0 a15 15 0 1 0 -30 0', 'M56 58 H92 V78'],
+    smallStroke: 14,
   },
 };
 

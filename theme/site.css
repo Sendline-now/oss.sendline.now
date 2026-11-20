@@ -54,10 +54,12 @@
   --mongo4s: #5bbf7a;
   --logging4s: #e5b54a;
   --metrics4s: #52b6ea;
+  --oauth4s: #a892f0;
   /* Each colour's ink, as in brand/: what is drawn or written on a plate of that colour. */
   --mongo4s-ink: #061a0b;
   --logging4s-ink: #1f1500;
   --metrics4s-ink: #021a29;
+  --oauth4s-ink: #110a2e;
 
   --ground: #0c0d0f;
   --card: #16181b;
@@ -93,6 +95,7 @@
 :root[data-lib='mongo4s'] { --section: var(--mongo4s); --section-ink: var(--mongo4s-ink); }
 :root[data-lib='logging4s'] { --section: var(--logging4s); --section-ink: var(--logging4s-ink); }
 :root[data-lib='metrics4s'] { --section: var(--metrics4s); --section-ink: var(--metrics4s-ink); }
+:root[data-lib='oauth4s'] { --section: var(--oauth4s); --section-ink: var(--oauth4s-ink); }
 
 /* Code is coloured at build time against these (Shiki's css-variables theme), so both themes share one markup. */
 :root {
@@ -131,6 +134,7 @@
   :root:not([data-theme='dark'])[data-lib='mongo4s'] { --section-text: #1d7a3f; }
   :root:not([data-theme='dark'])[data-lib='logging4s'] { --section-text: #8a6100; }
   :root:not([data-theme='dark'])[data-lib='metrics4s'] { --section-text: #0a689c; }
+  :root:not([data-theme='dark'])[data-lib='oauth4s'] { --section-text: #6a4fc8; }
   :root:not([data-theme='dark']):not([data-lib]) { --section-text: #a54826; }
 }
 
@@ -152,6 +156,7 @@
 :root[data-theme='light'][data-lib='mongo4s'] { --section-text: #1d7a3f; }
 :root[data-theme='light'][data-lib='logging4s'] { --section-text: #8a6100; }
 :root[data-theme='light'][data-lib='metrics4s'] { --section-text: #0a689c; }
+:root[data-theme='light'][data-lib='oauth4s'] { --section-text: #6a4fc8; }
 
 * { box-sizing: border-box; }
 
@@ -427,7 +432,7 @@ code, pre, kbd { font-family: var(--font-mono); font-size: 0.875em; font-variant
 .hub-hero .lead { font-size: 1.25rem; color: var(--ink-dim); max-width: 40rem; }
 .hub-hero .lead strong { color: var(--ink); font-weight: 560; }
 
-.gate { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.gate { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 
 .lane {
   display: flex;
@@ -691,7 +696,7 @@ td .lib .mark { width: 1.25rem; height: 1.25rem; }
 .search-status { margin: 0; padding: 0.6rem 1.15rem 0.75rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-dim); }
 .search-status:empty { display: none; }
 
-.gate-mini { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.gate-mini { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
 
 /* ---------- responsive ---------- */
 
@@ -700,11 +705,11 @@ td .lib .mark { width: 1.25rem; height: 1.25rem; }
   .toc { display: none; }
   .search { width: 2.1rem; padding: 0; justify-content: center; }
   .search span, .search kbd { display: none; }
+  .gate-mini { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 960px) {
-  .gate { grid-template-columns: 1fr; }
-  .principles, .together { grid-template-columns: 1fr; }
+  .gate, .principles, .together { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
 }
