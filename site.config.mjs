@@ -224,7 +224,7 @@ export const libraries = [
     no: '04',
     what: 'OAuth for Scala 3',
     repo: 'Sendline-now/oauth4s',
-    ref: 'v0.1.0',
+    ref: 'v0.1.1',
     description: 'OAuth 2.0 / 2.1 and OpenID Connect client for Scala 3, with Google, Microsoft, Apple and five more providers ready to use.',
     versions: { scala: 'scala3', cats: 'catsEffect', zio: 'zio', kyo: 'kyo', rapid: 'rapid' },
     chips: () => [],
